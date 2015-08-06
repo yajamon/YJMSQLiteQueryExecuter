@@ -7,6 +7,8 @@ Run the sql to sqlite3
 
 ## Requirement
 
+* libsqlite3.dylib
+
 ## Usage
 
 ## Install
