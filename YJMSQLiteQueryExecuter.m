@@ -24,6 +24,18 @@
     return rows;
 }
 
+-(NSArray *)query:(NSString *)sql withNamedParams:(NSArray *)params {
+    self.stmt = [self prepare:sql];
+    
+    [self bindNamedParamList:params];
+
+    NSArray *rows = [self getAllRow];
+
+    sqlite3_finalize(self.stmt);
+    
+    return rows;
+}
+
 +(NSDictionary *)makeNamedParam:(id)value target:(NSString *)target type:(NSInteger)type {
     NSMutableDictionary *param = [@{} mutableCopy];
     param[@"value"] = value;
