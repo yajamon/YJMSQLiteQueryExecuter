@@ -42,24 +42,24 @@
     return stmt;
 }
 
--(id)drawValueByStatement:(sqlite3_stmt *)stmt atIndex:(NSInteger)index {
-    NSInteger type = sqlite3_column_type(stmt, (int)index);
+-(id)getValueInColumnAtIndex:(NSInteger)index {
+    NSInteger type = sqlite3_column_type(self.stmt, (int)index);
     
     if (type == SQLITE_INTEGER){
-        NSInteger value = sqlite3_column_int64(stmt, (int)index);
+        NSInteger value = sqlite3_column_int64(self.stmt, (int)index);
         return @(value);
     }
     if (type == SQLITE_FLOAT){
-        double value = sqlite3_column_double(stmt, (int)index);
+        double value = sqlite3_column_double(self.stmt, (int)index);
         return @(value);
     }
     if (type == SQLITE_TEXT){
-        NSString *value = [NSString stringWithUTF8String:(char *)sqlite3_column_text(stmt, (int)index)];
+        NSString *value = [NSString stringWithUTF8String:(char *)sqlite3_column_text(self.stmt, (int)index)];
         return value;
     }
     if (type == SQLITE_BLOB){
-        NSInteger length = sqlite3_column_bytes(stmt, (int)index);
-        NSData *value = [[NSData alloc] initWithBytes:sqlite3_column_blob(stmt, (int)index) length:length];
+        NSInteger length = sqlite3_column_bytes(self.stmt, (int)index);
+        NSData *value = [[NSData alloc] initWithBytes:sqlite3_column_blob(self.stmt, (int)index) length:length];
         return value;
     }
     if (type == SQLITE_NULL){
