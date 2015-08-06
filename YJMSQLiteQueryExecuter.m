@@ -44,6 +44,13 @@
     return stmt;
 }
 
+-(void)bindNamedParamList:(NSArray *)params {
+    NSInteger length = params.count;
+    for (NSInteger index=0; index < length; ++index) {
+        [self bindNamedParam:params[index]];
+    }
+}
+
 -(void)bindNamedParam:(NSDictionary *)param {
     int index = sqlite3_bind_parameter_index(self.stmt, [param[@"target"] UTF8String]);
     int type = (int)[param[@"type"] integerValue];
