@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <sqlite3.h>
+#import "YJMSQLiteQueryExecuter.h"
 
 @interface ViewController ()
 
@@ -41,6 +42,16 @@
     }
     
 #pragma mark 使い方ここから
+    // 3. Executer生成
+    YJMSQLiteQueryExecuter *exec = [[YJMSQLiteQueryExecuter alloc]init];
+    
+    // 4. database持たせる
+    exec.database = sqlax;
+    
+    // 5. queryを実行する
+    NSString *createSql = @"CREATE TABLE IF NOT EXISTS names (name TEXT)";
+    [exec query:createSql];
+    
     
 
 }
