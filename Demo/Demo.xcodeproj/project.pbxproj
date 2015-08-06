@@ -14,6 +14,7 @@
 		C2AC61BD1B737C8B004965F0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2AC61BC1B737C8B004965F0 /* Images.xcassets */; };
 		C2AC61C01B737C8B004965F0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2AC61BE1B737C8B004965F0 /* LaunchScreen.xib */; };
 		C2AC61CC1B737C8B004965F0 /* DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AC61CB1B737C8B004965F0 /* DemoTests.m */; };
+		C2AC61D61B737ECB004965F0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C2AC61D51B737ECB004965F0 /* libsqlite3.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		C2AC61C51B737C8B004965F0 /* DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2AC61CA1B737C8B004965F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2AC61CB1B737C8B004965F0 /* DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoTests.m; sourceTree = "<group>"; };
+		C2AC61D51B737ECB004965F0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2AC61D61B737ECB004965F0 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +66,7 @@
 		C2AC61A31B737C8B004965F0 = {
 			isa = PBXGroup;
 			children = (
+				C2AC61D71B737ED5004965F0 /* Frameworks */,
 				C2AC61AE1B737C8B004965F0 /* Demo */,
 				C2AC61C81B737C8B004965F0 /* DemoTests */,
 				C2AC61AD1B737C8B004965F0 /* Products */,
@@ -117,6 +121,14 @@
 				C2AC61CA1B737C8B004965F0 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C2AC61D71B737ED5004965F0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C2AC61D51B737ECB004965F0 /* libsqlite3.dylib */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
