@@ -22,6 +22,15 @@
     self.stmt = [self prepare:sql];
 }
 
++(NSDictionary *)makeNamedParam:(id)value target:(NSString *)target type:(NSInteger)type {
+    NSMutableDictionary *param = [@{} mutableCopy];
+    param[@"value"] = value;
+    param[@"target"] = target;
+    param[@"type"] = @(type);
+    
+    return [param copy];
+}
+
 #pragma mark - private methods
 
 -(sqlite3_stmt *)prepare:(NSString *)sql {

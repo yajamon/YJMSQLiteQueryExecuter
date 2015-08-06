@@ -15,4 +15,6 @@
 
 -(void)query:(NSString *)sql;
 
++(NSDictionary *)makeNamedParam:(id)value target:(NSString *)target type:(NSInteger)type;
+
 @end
