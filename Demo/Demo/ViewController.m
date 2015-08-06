@@ -59,7 +59,7 @@
     NSMutableArray *params = [@[] mutableCopy];
     [params addObject:[YJMSQLiteQueryExecuter makeNamedParam:name target:@":name" type:SQLITE_TEXT]];
     
-    [exec query:insertSql withNamedParams:params];
+    [exec query:insertSql withNamedParams:[params copy]];
     
     // 7. SELECTの結果は返り値から得る
     NSString *selectSql = @"SELECT * FROM names";
