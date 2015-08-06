@@ -18,8 +18,10 @@
 
 #pragma mark - public methods
 
--(void)query:(NSString *)sql {
+-(NSArray *)query:(NSString *)sql {
     self.stmt = [self prepare:sql];
+    NSArray *rows = [self getAllRow];
+    return rows;
 }
 
 +(NSDictionary *)makeNamedParam:(id)value target:(NSString *)target type:(NSInteger)type {
@@ -40,6 +42,24 @@
         NSAssert1(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(self.database));
     }
     return stmt;
+}
+
+-(NSArray *)getAllRow {
+    /* prepare success, bind success */
+    NSMutableArray *rows = [@[] mutableCopy];
+    
+    int success = sqlite3_step(self.stmt);
+    
+    if (success == SQLITE_ERROR) {
+        sqlite3_finalize(self.stmt);
+        NSAssert1(0, @"Error: failed to insert into the database with message '%s'.", sqlite3_errmsg(self.database));
+    }
+    
+    while(success == SQLITE_ROW) {
+        [rows addObject:[self getRow]];
+        success = sqlite3_step(self.stmt);
+    }
+    return [rows copy];
 }
 
 -(NSDictionary *)getRow {

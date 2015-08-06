@@ -13,7 +13,7 @@
 
 @property (nonatomic) sqlite3 *database;
 
--(void)query:(NSString *)sql;
+-(NSArray *)query:(NSString *)sql;
 
 +(NSDictionary *)makeNamedParam:(id)value target:(NSString *)target type:(NSInteger)type;
 
