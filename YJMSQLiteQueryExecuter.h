@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <sqlite3.h>
 
 @interface YJMSQLiteQueryExecuter : NSObject
+
+@property (nonatomic) sqlite3 *database;
 
 @end

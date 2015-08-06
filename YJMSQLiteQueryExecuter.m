@@ -8,6 +8,12 @@
 
 #import "YJMSQLiteQueryExecuter.h"
 
+@interface YJMSQLiteQueryExecuter ()
+
+@property (nonatomic) sqlite3_stmt *stmt;
+
+@end
+
 @implementation YJMSQLiteQueryExecuter
 
 @end
