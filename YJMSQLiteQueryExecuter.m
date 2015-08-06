@@ -42,6 +42,10 @@
     return stmt;
 }
 
+-(NSString *)getColmunNameAtIndex:(NSInteger)index {
+    return [NSString stringWithUTF8String:(char *)sqlite3_column_name(self.stmt, (int)index)];
+}
+
 -(id)getValueInColumnAtIndex:(NSInteger)index {
     NSInteger type = sqlite3_column_type(self.stmt, (int)index);
     
