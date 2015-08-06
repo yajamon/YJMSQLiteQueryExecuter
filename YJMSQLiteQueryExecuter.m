@@ -44,6 +44,35 @@
     return stmt;
 }
 
+-(void)bindNamedParam:(NSDictionary *)param {
+    int index = sqlite3_bind_parameter_index(self.stmt, [param[@"target"] UTF8String]);
+    int type = (int)[param[@"type"] integerValue];
+    
+    if (type == SQLITE_NULL) {
+        sqlite3_bind_null(self.stmt, index);
+        return;
+    }
+    
+    if (type == SQLITE_INTEGER) {
+        sqlite3_bind_int64(self.stmt, index, [param[@"value"] integerValue]);
+        return;
+    }
+    if (type == SQLITE_FLOAT) {
+        sqlite3_bind_double(self.stmt, index, [param[@"value"] doubleValue]);
+        return;
+    }
+    if (type == SQLITE_TEXT) {
+        sqlite3_bind_text(self.stmt, index, [param[@"value"] UTF8String], -1, SQLITE_TRANSIENT);
+        return;
+    }
+    if (type == SQLITE_BLOB) {
+        // NSData前提
+        NSData *value = param[@"value"];
+        sqlite3_bind_blob(self.stmt, index, [value bytes], (int)[value length], NULL);
+        return;
+    }
+}
+
 -(NSArray *)getAllRow {
     /* prepare success, bind success */
     NSMutableArray *rows = [@[] mutableCopy];
