@@ -42,6 +42,17 @@
     return stmt;
 }
 
+-(NSDictionary *)getRow {
+    /* prepare success, bind success, step success */
+    NSMutableDictionary *row = [@{} mutableCopy];
+    NSInteger columnCount = sqlite3_column_count(self.stmt);
+    for (NSInteger index=0; index < columnCount; ++index) {
+        NSString *columnName = [self getColmunNameAtIndex:index];
+        row[columnName] = [self getValueInColumnAtIndex:index];
+    }
+    return [row copy];
+}
+
 -(NSString *)getColmunNameAtIndex:(NSInteger)index {
     return [NSString stringWithUTF8String:(char *)sqlite3_column_name(self.stmt, (int)index)];
 }
