@@ -5,10 +5,6 @@ Run the sql to sqlite3
 
 * supports named parameters
 
-## Demo
-
-## VS. 
-
 ## Requirement
 
 ## Usage
