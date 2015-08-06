@@ -52,6 +52,14 @@
     NSString *createSql = @"CREATE TABLE IF NOT EXISTS names (name TEXT)";
     [exec query:createSql];
     
+    // 6. 名前付きパラメータありでqueryを実行する
+    NSString *insertSql = @"INSERT INTO names(name) VALUES(:name)";
+    NSString *name = [NSString stringWithFormat:@"%@%d",@"name_",arc4random() % 99];
+    
+    NSMutableArray *params = [@[] mutableCopy];
+    [params addObject:[YJMSQLiteQueryExecuter makeNamedParam:name target:@":name" type:SQLITE_TEXT]];
+    
+    [exec query:insertSql withNamedParams:params];
     
 
 }
