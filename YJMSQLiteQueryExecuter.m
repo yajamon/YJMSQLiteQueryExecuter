@@ -16,6 +16,12 @@
 
 @implementation YJMSQLiteQueryExecuter
 
+#pragma mark - private method
+
+-(void)query:(NSString *)sql {
+    self.stmt = [self prepare:sql];
+}
+
 #pragma mark - private methods
 
 -(sqlite3_stmt *)prepare:(NSString *)sql {

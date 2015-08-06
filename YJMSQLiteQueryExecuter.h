@@ -13,4 +13,6 @@
 
 @property (nonatomic) sqlite3 *database;
 
+-(void)query:(NSString *)sql;
+
 @end
