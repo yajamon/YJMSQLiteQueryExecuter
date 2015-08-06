@@ -70,6 +70,8 @@
         NSLog(@"%@",record[@"name"]);
     }];
 
+    // 8.【sqlite閉じる】
+    sqlite3_close(sqlax);
 
 }
 
