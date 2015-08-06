@@ -11,6 +11,50 @@ Run the sql to sqlite3
 
 ## Usage
 
+### initialize
+
+**important**
+
+```objc
+sqlite3 *sqlax;
+NSString *filePath = @"your/sqlite/file/path";
+sqlite3_open([filePath UTF8String], &sqlax);
+
+YJMSQLiteQueryExecuter *exec = [[YJMSQLiteQueryExecuter alloc]init];
+exec.database = sqlax;
+```
+
+### run query
+
+```objc
+NSString *createSql = @"CREATE TABLE IF NOT EXISTS names (name TEXT)";
+[exec query:createSql];
+```
+
+### run query with named parameter
+
+```objc
+NSString *insertSql = @"INSERT INTO names(name) VALUES(:name)";
+NSString *name = [NSString stringWithFormat:@"%@%d",@"name_",arc4random() % 99];
+
+NSMutableArray *params = [@[] mutableCopy];
+[params addObject:[YJMSQLiteQueryExecuter makeNamedParam:name target:@":name" type:SQLITE_TEXT]];
+
+[exec query:insertSql withNamedParams:[params copy ]];
+```
+
+### get results of select query
+
+```objc
+NSString *selectSql = @"SELECT * FROM names";
+NSArray  *records = [exec query:selectSql];
+
+[records enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    NSDictionary *record = obj;
+    NSLog(@"%@",record[@"name"]);
+}];
+```
+
 ## Install
 
 * Manual
