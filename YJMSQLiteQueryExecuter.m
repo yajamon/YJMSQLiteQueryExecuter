@@ -19,9 +19,7 @@
 #pragma mark - public methods
 
 -(NSArray *)query:(NSString *)sql {
-    self.stmt = [self prepare:sql];
-    NSArray *rows = [self getAllRow];
-    return rows;
+    return [self query:sql withNamedParams:@[]];
 }
 
 -(NSArray *)query:(NSString *)sql withNamedParams:(NSArray *)params {
