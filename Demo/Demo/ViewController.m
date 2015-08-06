@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <sqlite3.h>
+#import "YJMSQLiteQueryExecuter.h"
 
 @interface ViewController ()
 
@@ -41,7 +42,36 @@
     }
     
 #pragma mark 使い方ここから
+    // 3. Executer生成
+    YJMSQLiteQueryExecuter *exec = [[YJMSQLiteQueryExecuter alloc]init];
     
+    // 4. database持たせる
+    exec.database = sqlax;
+    
+    // 5. queryを実行する
+    NSString *createSql = @"CREATE TABLE IF NOT EXISTS names (name TEXT)";
+    [exec query:createSql];
+    
+    // 6. 名前付きパラメータありでqueryを実行する
+    NSString *insertSql = @"INSERT INTO names(name) VALUES(:name)";
+    NSString *name = [NSString stringWithFormat:@"%@%d",@"name_",arc4random() % 99];
+    
+    NSMutableArray *params = [@[] mutableCopy];
+    [params addObject:[YJMSQLiteQueryExecuter makeNamedParam:name target:@":name" type:SQLITE_TEXT]];
+    
+    [exec query:insertSql withNamedParams:params];
+    
+    // 7. SELECTの結果は返り値から得る
+    NSString *selectSql = @"SELECT * FROM names";
+    NSArray  *records = [exec query:selectSql];
+    
+    [records enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSDictionary *record = obj;
+        NSLog(@"%@",record[@"name"]);
+    }];
+
+    // 8.【sqlite閉じる】
+    sqlite3_close(sqlax);
 
 }
 
