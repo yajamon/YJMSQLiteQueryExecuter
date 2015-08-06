@@ -1,7 +1,9 @@
 # YJMSQLiteQueryExecuter
-SQL executer in sqlite3
+Run the sql to sqlite3
 
 ## Description
+
+* supports named parameters
 
 ## Demo
 
