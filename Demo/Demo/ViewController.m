@@ -61,6 +61,15 @@
     
     [exec query:insertSql withNamedParams:params];
     
+    // 7. SELECTの結果は返り値から得る
+    NSString *selectSql = @"SELECT * FROM names";
+    NSArray  *records = [exec query:selectSql];
+    
+    [records enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSDictionary *record = obj;
+        NSLog(@"%@",record[@"name"]);
+    }];
+
 
 }
 
