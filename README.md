@@ -13,6 +13,9 @@ Run the sql to sqlite3
 
 ## Install
 
+* Manual
+    * Copy `YJMSQLiteQueryExecuter.h/m` to your project.
+
 ## Contribution
 
 ## License
