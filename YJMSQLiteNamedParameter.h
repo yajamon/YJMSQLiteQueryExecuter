@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <sqlite3.h>
 
 @interface YJMSQLiteNamedParameter : NSObject
+
+@property (nonatomic) id value;
+@property (nonatomic) NSString *target;
+@property (nonatomic) NSInteger dataType;
 
 @end
