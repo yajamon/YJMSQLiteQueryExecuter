@@ -10,4 +10,17 @@
 
 @implementation YJMSQLiteNamedParameter
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.value = nil;
+        self.target = @"";
+        self.dataType = YJMSQLiteDataTypeNull;
+    }
+    return self;
+}
+
+
+
 @end
