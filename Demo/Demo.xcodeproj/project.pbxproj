@@ -16,6 +16,7 @@
 		C2AC61CC1B737C8B004965F0 /* DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AC61CB1B737C8B004965F0 /* DemoTests.m */; };
 		C2AC61D61B737ECB004965F0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C2AC61D51B737ECB004965F0 /* libsqlite3.dylib */; };
 		C2AC61DA1B7380A4004965F0 /* YJMSQLiteQueryExecuter.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AC61D91B7380A4004965F0 /* YJMSQLiteQueryExecuter.m */; };
+		C2AC61DD1B74402F004965F0 /* YJMSQLiteNamedParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AC61DC1B74402F004965F0 /* YJMSQLiteNamedParameter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,8 @@
 		C2AC61D51B737ECB004965F0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		C2AC61D81B7380A4004965F0 /* YJMSQLiteQueryExecuter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YJMSQLiteQueryExecuter.h; path = ../YJMSQLiteQueryExecuter.h; sourceTree = "<group>"; };
 		C2AC61D91B7380A4004965F0 /* YJMSQLiteQueryExecuter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YJMSQLiteQueryExecuter.m; path = ../YJMSQLiteQueryExecuter.m; sourceTree = "<group>"; };
+		C2AC61DB1B74402F004965F0 /* YJMSQLiteNamedParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YJMSQLiteNamedParameter.h; path = ../YJMSQLiteNamedParameter.h; sourceTree = "<group>"; };
+		C2AC61DC1B74402F004965F0 /* YJMSQLiteNamedParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YJMSQLiteNamedParameter.m; path = ../YJMSQLiteNamedParameter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +74,8 @@
 			children = (
 				C2AC61D81B7380A4004965F0 /* YJMSQLiteQueryExecuter.h */,
 				C2AC61D91B7380A4004965F0 /* YJMSQLiteQueryExecuter.m */,
+				C2AC61DB1B74402F004965F0 /* YJMSQLiteNamedParameter.h */,
+				C2AC61DC1B74402F004965F0 /* YJMSQLiteNamedParameter.m */,
 				C2AC61D71B737ED5004965F0 /* Frameworks */,
 				C2AC61AE1B737C8B004965F0 /* Demo */,
 				C2AC61C81B737C8B004965F0 /* DemoTests */,
@@ -240,6 +245,7 @@
 				C2AC61B81B737C8B004965F0 /* ViewController.m in Sources */,
 				C2AC61B51B737C8B004965F0 /* AppDelegate.m in Sources */,
 				C2AC61B21B737C8B004965F0 /* main.m in Sources */,
+				C2AC61DD1B74402F004965F0 /* YJMSQLiteNamedParameter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
