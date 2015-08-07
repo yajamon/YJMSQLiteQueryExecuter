@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
+#import "YJMSQLiteNamedParameter.h"
 
 @interface YJMSQLiteQueryExecuter : NSObject
 
@@ -16,7 +17,5 @@
 -(NSArray *)query:(NSString *)sql;
 
 -(NSArray *)query:(NSString *)sql withNamedParams:(NSArray *)params;
-
-+(NSDictionary *)makeNamedParam:(id)value target:(NSString *)target type:(NSInteger)type;
 
 @end

@@ -57,7 +57,9 @@
     NSString *name = [NSString stringWithFormat:@"%@%d",@"name_",arc4random() % 99];
     
     NSMutableArray *params = [@[] mutableCopy];
-    [params addObject:[YJMSQLiteQueryExecuter makeNamedParam:name target:@":name" type:SQLITE_TEXT]];
+    [params addObject:[YJMSQLiteNamedParameter namedParameterWithValue:name
+                                                                target:@":name"
+                                                              dataType:YJMSQLiteDataTypeText]];
     
     [exec query:insertSql withNamedParams:[params copy]];
     
