@@ -38,7 +38,7 @@ NSString *insertSql = @"INSERT INTO names(name) VALUES(:name)";
 NSString *name = [NSString stringWithFormat:@"%@%d",@"name_",arc4random() % 99];
 
 NSMutableArray *params = [@[] mutableCopy];
-[params addObject:[YJMSQLiteQueryExecuter makeNamedParam:name target:@":name" type:SQLITE_TEXT]];
+[params addObject:[YJMSQLiteNamedParameter namedParameterWithValue:name target:@":name" type:YJMSQLiteDataTypeText]];
 
 [exec query:insertSql withNamedParams:[params copy ]];
 ```
@@ -58,6 +58,7 @@ NSArray  *records = [exec query:selectSql];
 ## Install
 
 * Manual
+    * Copy `YJMSQLiteNamedParameter.h/m` to your project.
     * Copy `YJMSQLiteQueryExecuter.h/m` to your project.
 
 ## Contribution
