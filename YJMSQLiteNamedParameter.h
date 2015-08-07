@@ -23,4 +23,6 @@ typedef NS_ENUM(NSInteger, YJMSQLiteDataType){
 @property (nonatomic) NSString *target;
 @property (nonatomic) YJMSQLiteDataType dataType;
 
++(instancetype)namedParameterWithValue:(id)value target:(NSString *)target dataType:(YJMSQLiteDataType)dataType;
+
 @end

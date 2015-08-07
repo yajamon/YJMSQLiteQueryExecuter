@@ -27,6 +27,8 @@
     return self;
 }
 
-
++(instancetype)namedParameterWithValue:(id)value target:(NSString *)target dataType:(YJMSQLiteDataType)dataType {
+    return [[YJMSQLiteNamedParameter alloc] initWithValue:value target:target dataType:dataType];
+}
 
 @end
