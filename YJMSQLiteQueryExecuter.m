@@ -61,30 +61,30 @@
     }
 }
 
--(void)bindNamedParam:(NSDictionary *)param {
-    int index = sqlite3_bind_parameter_index(self.stmt, [param[@"target"] UTF8String]);
-    int type = (int)[param[@"type"] integerValue];
+-(void)bindNamedParam:(YJMSQLiteNamedParameter *)param {
+    int index = sqlite3_bind_parameter_index(self.stmt, [param.target UTF8String]);
+    YJMSQLiteDataType type = param.dataType;
     
-    if (type == SQLITE_NULL) {
+    if (type == YJMSQLiteDataTypeNull) {
         sqlite3_bind_null(self.stmt, index);
         return;
     }
     
-    if (type == SQLITE_INTEGER) {
-        sqlite3_bind_int64(self.stmt, index, [param[@"value"] integerValue]);
+    if (type == YJMSQLiteDataTypeInteger) {
+        sqlite3_bind_int64(self.stmt, index, [(NSNumber*)param.value integerValue]);
         return;
     }
-    if (type == SQLITE_FLOAT) {
-        sqlite3_bind_double(self.stmt, index, [param[@"value"] doubleValue]);
+    if (type == YJMSQLiteDataTypeFloat) {
+        sqlite3_bind_double(self.stmt, index, [(NSNumber*)param.value doubleValue]);
         return;
     }
-    if (type == SQLITE_TEXT) {
-        sqlite3_bind_text(self.stmt, index, [param[@"value"] UTF8String], -1, SQLITE_TRANSIENT);
+    if (type == YJMSQLiteDataTypeText) {
+        sqlite3_bind_text(self.stmt, index, [(NSString*)param.value UTF8String], -1, SQLITE_TRANSIENT);
         return;
     }
-    if (type == SQLITE_BLOB) {
+    if (type == YJMSQLiteDataTypeBlob) {
         // NSData前提
-        NSData *value = param[@"value"];
+        NSData *value = (NSData*)param.value;
         sqlite3_bind_blob(self.stmt, index, [value bytes], (int)[value length], NULL);
         return;
     }

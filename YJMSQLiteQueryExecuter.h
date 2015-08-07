@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
+#import "YJMSQLiteNamedParameter.h"
 
 @interface YJMSQLiteQueryExecuter : NSObject
 
