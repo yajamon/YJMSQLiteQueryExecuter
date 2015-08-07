@@ -19,10 +19,29 @@ typedef NS_ENUM(NSInteger, YJMSQLiteDataType){
 
 @interface YJMSQLiteNamedParameter : NSObject
 
+/**
+ * valid instancetype NSString|NSNumber|NSData|NSNull
+ */
 @property (nonatomic) id value;
+
+/**
+ * bind target name. example format ":name"
+ */
 @property (nonatomic) NSString *target;
+
+/**
+ * bind data type
+ * @see YJMSQLiteDataType
+ */
 @property (nonatomic) YJMSQLiteDataType dataType;
 
+/**
+ * create named paramater class
+ * @param value 値
+ * @param target bind target
+ * @param dataType SQLite datatype_code
+ * @return instancetype インスタンスを返却する
+ */
 +(instancetype)namedParameterWithValue:(id)value target:(NSString *)target dataType:(YJMSQLiteDataType)dataType;
 
 @end
