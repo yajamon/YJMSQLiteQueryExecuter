@@ -12,11 +12,17 @@
 
 - (instancetype)init
 {
+    return [self initWithValue:nil target:@"" dataType:YJMSQLiteDataTypeNull];
+}
+
+- (instancetype)initWithValue:(id)value target:(NSString *)target dataType:(YJMSQLiteDataType)dataType
+{
     self = [super init];
     if (self) {
-        self.value = nil;
-        self.target = @"";
-        self.dataType = YJMSQLiteDataTypeNull;
+        self.value = value;
+        self.target = target;
+        self.dataType = dataType;
+
     }
     return self;
 }
